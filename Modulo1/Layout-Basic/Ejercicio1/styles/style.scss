@@ -1,0 +1,55 @@
+h1 {
+    color: rgb(89, 0, 255);
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.box {
+  padding: 5px;
+  font-size: large;
+  font-weight: bold;
+  height: 70px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  border-radius: 10%;
+}
+
+
+@function calculate-colors($numberOfColum, $baseColor) {
+    $lighterColor: lighten($baseColor, 10% * ($numberOfColum));
+    $darkerColor: darken($baseColor, 10% * ($numberOfColum));
+    
+    @return (
+      "light": $lighterColor,
+      "dark": $darkerColor
+    );
+}
+
+ $baseColor: #ff0000; // Color base de la paleta
+
+ .base-color {
+  background-color: $baseColor;
+}  
+
+ @for $i from 1 through 4 {
+    $colors: calculate-colors($i, $baseColor);
+  
+    .lighten-#{$i} {
+      background-color: map-get($colors, "light");
+      color: black;
+    }
+  
+    .darken-#{$i} {
+      background-color: map-get($colors, "dark");
+      color: white;
+    }
+}
