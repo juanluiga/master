@@ -1,0 +1,11 @@
+//Template A
+$baseColor: #ff0000; // Color base de la paleta
+$principal-font: serif;
+$secondary-font: monospace;
+$box-font: system-ui;
+
+.box-shadow {
+  border: 1px solid black;
+  box-shadow: 5px 10px 5px rgba(0, 0, 0, 0.2);
+  
+}

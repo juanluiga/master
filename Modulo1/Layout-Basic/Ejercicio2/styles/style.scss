@@ -1,0 +1,72 @@
+@import './stylea';
+h1 {
+    color: rgb(89, 0, 255);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.box {
+  padding: 5px;
+  font-size: large;
+  height: 70px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  border-radius: 10%;
+  font-family: $principal-font;
+}
+
+.box-shadow {
+  border: 1px solid black;
+  box-shadow: -5px 10px 5px rgba(0, 0, 0, 0.2);
+}
+
+.principal-font {
+  font-family: $principal-font;
+}
+
+.secondary-font {
+  font-family: $secondary-font;
+}
+
+.box-font {
+  font-family: $box-font;
+}
+
+
+@function calculate-colors($numberOfColum, $baseColor) {
+    $lighterColor: lighten($baseColor, 10% * ($numberOfColum));
+    $darkerColor: darken($baseColor, 10% * ($numberOfColum));
+    
+    @return (
+      "light": $lighterColor,
+      "dark": $darkerColor
+    );
+}
+
+
+
+ .base-color {
+  background-color: $baseColor;
+}  
+
+ @for $i from 1 through 4 {
+    $colors: calculate-colors($i, $baseColor);
+  
+    .lighten-#{$i} {
+      background-color: map-get($colors, "light");
+      color: black;
+    }
+  
+    .darken-#{$i} {
+      background-color: map-get($colors, "dark");
+      color: white;
+    }
+}
